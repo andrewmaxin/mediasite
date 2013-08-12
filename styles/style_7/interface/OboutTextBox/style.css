@@ -1,0 +1,194 @@
+@media screen
+{
+	/* Left */
+	.ob_iTL
+	{
+		position: absolute;
+    	font-size: 1px;
+    	height: 17px;
+    	width: 7px;
+    	left: 0px;
+	}
+	
+	/* Content */
+	.ob_iTC
+	{
+		height: 17px;
+		line-height: 17px;
+		margin-left: 7px;
+		margin-right: 7px;
+	}
+	
+	.ob_iTC1
+	{
+		top: 50%;
+        position: relative;
+	}
+	
+	.ob_iTC2
+	{
+		position: relative;
+        top: -7px;
+        #top: -6px;
+	}
+	
+	/* Right */
+	.ob_iTR
+	{
+		position: absolute;    	
+    	font-size: 1px;
+    	height: 17px;
+		width: 7px;
+		right: 0px;
+	}
+	
+	/* Input Element */
+	.ob_iTIE
+	{
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top:0px;
+		display: block;
+    	background-color: transparent;
+    	border: 0px;
+    	margin: 0px;
+    	padding: 0px;    	
+    	#margin-top: -1px;
+    	#margin-bottom: -1px;
+    	font-family: Verdana;
+		font-size: 10px;
+		color: #4B555E;
+		height: 17px;
+		outline: 0;
+	}
+	
+	.ob_iTCIC
+	{
+		display: none;
+	}
+	
+	
+	
+	
+	
+	/* Normal State - container */
+	.ob_iTCN
+	{
+		position: relative;
+    	height: 17px;
+    	font-size: 1px;
+    	padding: 0px;
+	}
+	
+	/* Normal State - left */
+	.ob_iTCN .ob_iTL
+	{
+		background-image: url(images/normal_left.gif);
+	}
+	
+	/* Normal State - content */
+	.ob_iTCN .ob_iTC
+	{
+		background-image: url(images/normal_content.gif);
+	}
+		
+	/* Normal State - right */
+	.ob_iTCN .ob_iTR
+	{
+		background-image: url(images/normal_right.gif);
+	}
+	
+	
+	
+	
+	/* Over State - container */
+	.ob_iTCO
+	{
+		position: relative;
+    	height: 17px;
+    	font-size: 1px;
+    	padding: 0px;
+	}
+	
+	/* Over State - left */
+	.ob_iTCO .ob_iTL
+	{
+		background-image: url(images/over_left.gif);
+	}
+	
+	/* Over State - content */
+	.ob_iTCO .ob_iTC
+	{
+		background-image: url(images/over_content.gif);
+	}
+	
+	/* Over State - right */
+	.ob_iTCO .ob_iTR
+	{
+		background-image: url(images/over_right.gif);
+	}
+	
+	
+	
+	
+	
+	/* Active State - container */
+	.ob_iTCA
+	{
+		position: relative;
+    	height: 17px;
+    	font-size: 1px;
+    	padding: 0px;
+	}
+	
+	/* Active State - left */
+	.ob_iTCA .ob_iTL
+	{
+		background-image: url(images/active_left.gif);
+	}
+	
+	/* Active State - content */
+	.ob_iTCA .ob_iTC
+	{
+		background-image: url(images/active_content.gif);
+	}
+	
+	/* Active State - right */
+	.ob_iTCA .ob_iTR
+	{
+		background-image: url(images/active_right.gif);
+	}
+	
+	
+	
+	
+	
+	/* Disabled State - container */
+	.ob_iTCD
+	{
+		position: relative;
+    	height: 17px;
+    	font-size: 1px;
+    	padding: 0px;
+	}
+	
+	/* Disabled State - left */
+	.ob_iTCD .ob_iTL
+	{
+		background-image: url(images/disabled_left.gif);
+	}
+	
+	/* Disabled State - content */
+	.ob_iTCD .ob_iTC
+	{
+		background-image: url(images/disabled_content.gif);
+	}
+	
+	/* Disabled State - right */
+	.ob_iTCD .ob_iTR
+	{
+		background-image: url(images/disabled_right.gif);
+	}
+}

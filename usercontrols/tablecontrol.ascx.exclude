@@ -1,0 +1,290 @@
+<%@ Control Language="VB" AutoEventWireup="true" CodeFile="tablecontrol.ascx.vb" Inherits="usercontrols_tablecontrol" %>
+<%@ Register TagPrefix="obout" Namespace="Obout.Grid" Assembly="obout_Grid_NET" %>
+<%@ Register TagPrefix="obout" Namespace="OboutInc.Flyout2" Assembly="obout_Flyout2_NET"%>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.OleDb" %>
+<%@ Import Namespace="System.Data.SqlClient" %>
+
+
+<script language="VB" runat="server">
+    Dim grid1 As Obout.Grid.Grid = New Grid()
+    Dim Flyout1 As OboutInc.Flyout2.Flyout
+	
+	Sub Page_load(ByVal sender As Object, ByVal e As EventArgs)			
+		grid1.ID = "grid1"
+        grid1.CallbackMode = True
+        grid1.Serialize = True
+        grid1.AutoGenerateColumns = False
+		grid1.AllowAddingRecords = false
+        grid1.AllowFiltering = False
+	
+        grid1.FolderStyle = "http://andrew.westernim.com/styles/style_6"
+        grid1.FolderLocalization = "localization"
+        
+        grid1.Width = New Web.UI.WebControls.Unit("100%")
+        grid1.ScrollingSettings.ScrollHeight = 350
+       
+        
+        'AddHandler CType(grid1, Grid).Rebind, AddressOf RebindGrid
+        
+        ' creating the template for the Image column (view mode)
+        '------------------------------------------------------------------------
+        Dim Mp3LinkTemplate As GridRuntimeTemplate
+        Mp3LinkTemplate = New GridRuntimeTemplate()
+        Mp3LinkTemplate.ID = "Mp3LinkTemplate"
+        Mp3LinkTemplate.Template = New Obout.Grid.RuntimeTemplate()
+        AddHandler CType(Mp3LinkTemplate.Template, Obout.Grid.RuntimeTemplate).CreateTemplate, AddressOf Cr_Mp3LinkTemplate
+        '------------------------------------------------------------------------		
+
+        ' '' creating the template for the Image column (view mode)
+        ' ''------------------------------------------------------------------------
+        ''Dim PPTLinkTemplate As GridRuntimeTemplate
+        ''PPTLinkTemplate = New GridRuntimeTemplate()
+        ''PPTLinkTemplate.ID = "PPTLinkTemplate"
+        ''PPTLinkTemplate.Template = New Obout.Grid.RuntimeTemplate()
+        ''AddHandler CType(PPTLinkTemplate.Template, Obout.Grid.RuntimeTemplate).CreateTemplate, AddressOf Cr_PPTLinkTemplate
+        ' ''------------------------------------------------------------------------		
+
+        ' '' creating the template for the Image column (view mode)
+        ' ''------------------------------------------------------------------------
+        ''Dim EditLinkTemplate As GridRuntimeTemplate
+        ''EditLinkTemplate = New GridRuntimeTemplate()
+        ''EditLinkTemplate.ID = "EditLinkTemplate"
+        ''EditLinkTemplate.Template = New Obout.Grid.RuntimeTemplate()
+        ''AddHandler CType(EditLinkTemplate.Template, Obout.Grid.RuntimeTemplate).CreateTemplate, AddressOf Cr_EditLinkTemplate
+        ' ''------------------------------------------------------------------------		
+
+        ' '' creating the template for the Image column (view mode)
+        ' ''------------------------------------------------------------------------
+        ''Dim BookMarkLinkTemplate As GridRuntimeTemplate
+        ''BookMarkLinkTemplate = New GridRuntimeTemplate()
+        ''BookMarkLinkTemplate.ID = "BookMarkLinkTemplate"
+        ''BookMarkLinkTemplate.Template = New Obout.Grid.RuntimeTemplate()
+        ''AddHandler CType(BookMarkLinkTemplate.Template, Obout.Grid.RuntimeTemplate).CreateTemplate, AddressOf Cr_BookmarkLinkTemplate
+        ' ''------------------------------------------------------------------------		
+        
+        '' creating the template for the Image column (view mode)
+        ''------------------------------------------------------------------------
+        'Dim LyricPreviewTemplate As GridRuntimeTemplate
+        'LyricPreviewTemplate = New GridRuntimeTemplate()
+        'LyricPreviewTemplate.ID = "LyricPreviewTemplate"
+        'LyricPreviewTemplate.Template = New Obout.Grid.RuntimeTemplate()
+        'AddHandler CType(LyricPreviewTemplate.Template, Obout.Grid.RuntimeTemplate).CreateTemplate, AddressOf Cr_LyricPreviewTemplate
+        ''------------------------------------------------------------------------		
+
+        ' '' creating the template for the Image column (view mode)
+        ' ''------------------------------------------------------------------------
+        ''Dim DeleteSongTemplate As GridRuntimeTemplate
+        ''DeleteSongTemplate = New GridRuntimeTemplate()
+        ''DeleteSongTemplate.ID = "DeleteSongTemplate"
+        ''DeleteSongTemplate.Template = New Obout.Grid.RuntimeTemplate()
+        ''AddHandler CType(DeleteSongTemplate.Template, Obout.Grid.RuntimeTemplate).CreateTemplate, AddressOf Cr_DeleteSongTemplate
+        ' ''------------------------------------------------------------------------		
+
+        
+        
+        '' adding the template to the Templates collection
+        grid1.Templates.Add(Mp3LinkTemplate)
+        'grid1.Templates.Add(PPTLinkTemplate)
+        'grid1.Templates.Add(EditLinkTemplate)
+        'grid1.Templates.Add(BookMarkLinkTemplate)
+        'grid1.Templates.Add(LyricPreviewTemplate)
+        'grid1.Templates.Add(DeleteSongTemplate)
+        
+        ' creating the columns
+        Dim oCol0 As Column = New Column()
+        oCol0.DataField = "id"
+        oCol0.ReadOnly = True
+        oCol0.HeaderText = "ID"
+        oCol0.Width = "0%"
+        
+		Dim oCol1 As Column = new Column()
+        oCol1.DataField = "Title"
+		oCol1.ReadOnly = true
+        oCol1.HeaderText = "Title"
+        oCol1.Width = "25%"
+
+		Dim oCol2 As Column = new Column()
+        oCol2.DataField = "Author1"
+        oCol2.HeaderText = "Author"
+        oCol2.Width = "25%"
+	
+		Dim oCol3 As Column = new Column()
+        oCol3.DataField = "Author2"
+        oCol3.HeaderText = "Author"
+        oCol3.Width = "25%"
+
+		Dim oCol4 As Column = new Column()
+        oCol4.DataField = "Mp3Link"
+        oCol4.HeaderText = "Mp3"
+        oCol4.Width = "5%"
+		oCol4.Align = "center"
+        oCol4.TemplateSettings.TemplateId = "Mp3LinkTemplate"
+        
+        Dim oCol5 As Column = New Column()
+        oCol5.DataField = "PptLink"
+        oCol5.HeaderText = "Doc"
+        oCol5.Width = "5%"
+        oCol5.Align = "center"
+        'oCol5.TemplateSettings.TemplateId = "PPTLinkTemplate"
+        
+        'Dim oCol6 As Column = New Column()
+        'oCol6.DataField = ""
+        'oCol6.HeaderText = "Lyrics"
+        'oCol6.Width = "5%"
+        'oCol6.Align = "center"
+        'oCol6.TemplateSettings.TemplateId = "LyricPreviewTemplate"
+
+        'Dim oCol7 As Column = New Column()
+        'oCol7.DataField = "SongText"
+        'oCol7.HeaderText = ""
+        'oCol7.Width = "0"
+        'oCol7.Align = "center"
+        'oCol7.TemplateSettings.TemplateId = "LyricPreviewTemplate"
+        
+		' add the columns to the Columns collection of the grid
+        
+        'grid1.Columns.Add(oCol6)
+        grid1.Columns.Add(oCol1)
+        grid1.Columns.Add(oCol2)
+        grid1.Columns.Add(oCol3)
+        grid1.Columns.Add(oCol4)
+        grid1.Columns.Add(oCol5)
+        'grid1.Columns.Add(oCol7)
+        
+        Flyout1 = New Flyout()
+        Flyout1.ID = "Flyout1"
+        Flyout1.CloseEvent = CloseEvents.NONE
+        Flyout1.OpenEvent = OpenEvents.NONE
+        Flyout1.Align = AlignStyle.LEFT
+        Flyout1.Position = PositionStyle.BOTTOM_RIGHT
+        Flyout1.DelayTime = 1000
+
+        Dim oLiteral As Literal = New Literal()
+        oLiteral.Text = "<div id=""divFlyoutContent"" style="" width:400px; height: 800px; background-color: #EEEEEE; border: 1px solid #000000;"" >test</div>"
+
+        Flyout1.Controls.Add(oLiteral)
+		
+        ' add the grid to the controls collection of the PlaceHolder
+		' add the grid to the controls collection of the PlaceHolder
+		phGrid1.Controls.Add(grid1)
+        phGrid1.Controls.Add(Flyout1)
+        
+		If Not Page.IsPostBack Then		
+			BindGrid()			
+		End If		
+	End Sub
+	
+    Sub BindGrid()
+        
+        Try
+            Dim myConn As OleDbConnection = New OleDbConnection(ConfigurationManager.AppSettings("SQLConnectionString"))
+            myConn.Open()
+            
+            Dim myComm As OleDbCommand = New OleDbCommand("SELECT * FROM Songs", myConn)
+            Dim myReader As OleDbDataReader = myComm.ExecuteReader()
+            grid1.DataSource = myReader
+            grid1.DataBind()
+
+            myConn.Close()
+            myConn = Nothing
+        
+        Catch ex As Exception
+
+        End Try
+        
+        
+    End Sub
+    
+    ' Create the methods that will load the data into the templates
+    '------------------------------------------------------------------------
+    Sub Cr_Mp3LinkTemplate(ByVal sender As Object, ByVal e As Obout.Grid.GridRuntimeTemplateEventArgs)
+        Dim oLiteral As Literal = New Literal()
+        e.Container.Controls.Add(oLiteral)
+        AddHandler CType(oLiteral, Literal).DataBinding, AddressOf DataBindMp3LinkTemplate
+    End Sub
+	
+    Sub DataBindMp3LinkTemplate(ByVal sender As Object, ByVal e As EventArgs)
+        Dim oLiteral As Literal = CType(sender, Literal)
+        Dim oContainer As Obout.Grid.TemplateContainer
+        oContainer = CType(oLiteral.NamingContainer, Obout.Grid.TemplateContainer)
+
+        If oContainer.Value <> "" Then
+            oLiteral.Text = "<a href=""filedownload.aspx?contentid=0&dbid=" + oContainer.DataItem("id") + """>" + "<img src=""/images/Spkr.gif"" alt=""Click to Download the audio"" border=""0"" />" + "</a>"
+        End If
+        
+		
+    End Sub
+    '------------------------------------------------------------------------
+	
+    Sub Cr_LyricPreviewTemplate(ByVal sender As Object, ByVal e As Obout.Grid.GridRuntimeTemplateEventArgs)
+        Dim oLiteral As Literal = New Literal()
+        e.Container.Controls.Add(oLiteral)
+        AddHandler CType(oLiteral, Literal).DataBinding, AddressOf DataBindLyricPreviewTemplate
+    End Sub
+	
+    Sub DataBindLyricPreviewTemplate(ByVal sender As Object, ByVal e As EventArgs)
+        Dim oLiteral As Literal = CType(sender, Literal)
+        Dim oContainer As Obout.Grid.TemplateContainer
+        oContainer = CType(oLiteral.NamingContainer, Obout.Grid.TemplateContainer)
+
+        oLiteral.Text = "<span  id=""grid_link_" + oContainer.DataItem("ID") + """ onmouseover=""attachFlyoutToLink(this)"" onmouseout=""closeFlyout()""><img src=""/images/First.gif"" alt="""" border=""0"" /></span>"
+        
+		
+    End Sub
+    '------------------------------------------------------------------------
+	
+    
+    
+    Sub RebindGrid(ByVal sender As Object, ByVal e As EventArgs)
+        BindGrid()
+    End Sub
+	</script>	
+	<script type="text/javascript">
+		    function attachFlyoutToLink(oLink) {	
+		        try {	        	                
+    		        
+		            <%=Flyout1.getClientID()%>.AttachTo(oLink.id);
+		            var sNewHtml = getRecordInfo(oLink);
+		            document.getElementById("divFlyoutContent").innerHTML = sNewHtml;
+
+		            <%=Flyout1.getClientID()%>.Open();
+                } catch(ex){ }
+		    }
+		    
+		    function closeFlyout() {
+		        <%=Flyout1.getClientID()%>.Close();
+		    }
+		    
+		    function getRecordInfo(oLink) {
+		        var oRecord = oLink.parentNode.parentNode.parentNode;
+		        
+		        // getting row index:
+		        var iIndex = 0;
+		        var oTempRecord = oRecord.parentNode.firstChild;
+		        while(oTempRecord != null && oTempRecord != oRecord) {
+		            oTempRecord = oTempRecord.nextSibling;
+		            iIndex++;
+		        }
+		        
+		        if(oTempRecord == null) {
+		            return;
+		        }
+		        
+		        
+		        var sTitle = grid1.Rows[iIndex].Cells[1].Value;
+		        var sSongLyric = grid1.Rows[iIndex].Cells[6].Value;
+		       
+		       sSongLyric = 
+	    
+		        var sNewHtml = "<table>";
+		        sNewHtml += "<tr><td class='tdText' nowrap><b>Song:</b></td><td>" + sTitle + "</td></tr>";
+		        sNewHtml += "<tr><td class='tdText' nowrap><b></b></td><td >" + sSongLyric + "</tr>";
+		        sNewHtml += "</table>";
+		        
+		        return sNewHtml;
+		    }
+        </script>	
+<asp:PlaceHolder ID="phGrid1" runat="server"></asp:PlaceHolder>
+
+	

@@ -1,0 +1,165 @@
+/*@import url(reset.css);*/
+
+/*_______________GENERAL SETUP________________*/
+body { font-size:90%;  background:#352E28 url(../images/bg2.png) top repeat-x; color:#f9f0da; height:100%; margin:0 }
+html { height:100%; }
+body, td { font-family:Verdana, Arial, san-serif; line-height:120% }
+a { color:#f7c376 }
+a:hover { color:#f9efd9 }
+p { font-size: 1em; margin-bottom: 1em; }
+#serviceTimes .p { margin-bottom:.8em }
+p.contentpaneopen { font-size: 1em; margin-bottom: 1em; }
+h2.contentpaneopen { margin-bottom: 1em; }
+a img, :link img, :visited img { border:0; outline:none; }
+
+
+/*___________________MAIN LAYOUT________________*/
+#wrapper { width:940px; margin:0 auto; overflow:hidden }
+#headerLogo { width:940px; height:60px; background:url(../images/header-logo.gif) no-repeat  }
+#logo { width:405px; height:60px; float:left }
+#topRight { width:535px; height:150px; float:right }
+#serviceTimes { width:340px; height:111px; margin:3px 0 0 0; color:#420f01; float:right; overflow:auto; line-height:100%; font-size:80% }
+#serviceTimes .moduletable h3 { padding:0; margin:8px 0 5px 0; background:none }
+.search .inputbox { background:none; border:0; color:#000; width:180px; height:16px; padding:0; margin:12px 30px 0 0; float:right; font-size:0.9em; font-family:"Times New Roman"}
+#navBar { background:url(../images/nav-bar.gif) no-repeat; height:92px; width:940px; padding:0 }
+#title {margin-left:0px;margin-top:60px;font-size:larger;font-weight:bold;}
+ 
+#closebutton {text-align:right}
+#mainLeft { width:595px; float:left; margin:20px 0 15px 14px }
+#mainFull { width:900px; margin:0 auto; margin-bottom:15px  }
+#rightColumn { width:316px; float:right; padding-top:25px; background:url(../images/right-bg.gif) top no-repeat; margin-bottom:15px }
+* html #footer { margin-top: -9em }
+#nonFooter { position:relative; min-height:98% }
+* html #nonFooter { height:98% }
+#content { padding-bottom: 9em; margin-top: 70px; }
+#footer { height:180px; width:100%; color:#241a11; background:url(../images/footer-bg.gif) repeat-x; position: relative; margin-top: -9em }
+#footer .text { width:920px; margin:0 auto }
+#footer a { color:#241a11 }
+#copyright { width:430px; height:82px; margin:70px 0 0 0; float:left; font-size:0.8em }
+
+/*__________VERTICAL SIDE MENU STYLES________*/
+ul.menu { margin:0; padding:0; z-index:50 !important }
+ul.menu li { list-style:none; margin:0; padding:0; z-index:50 !important }
+ul.menu span { display:block; height:18px; line-height:18px; padding-left:0 }
+ul.menu a { display:block; background:url(../images/menu-list.gif) left no-repeat; font-weight:bold; margin:0; text-indent:4px; text-decoration:none; cursor:pointer }
+ul.menu a:hover { background:url(../images/menu-list.gif) left no-repeat; color:#fff }
+ul.menu ul { margin-left:14px; padding:0 }
+ul.menu ul a { text-indent:0; z-index:50 !important; cursor:pointer }
+ul.menu ul li a {  text-align:left; margin:0 }
+ul.menu li.active li a:hover { cursor:pointer }
+ul.menu li li { padding:0; margin:0; z-index:50 !important }
+ul.menu li a { padding-left:10px; z-index:50 !important }
+ul.menu li.active a { text-decoration: none; z-index:50 !important }
+ul.menu li a:hover, ul.menu li.active a:hover, ul.menu li.active li a:hover { text-decoration:underline; color:#fff }
+ul.menu li.active li a { background:url(../images/menu-list.gif) left no-repeat; margin-left:5px; text-indent:4px; z-index:50 !important; text-decoration:inherit; font-weight:normal } /* submenu link color */ 
+
+/*_________END VERTICAL SIDE MENU STYLES________*/
+
+/*__________MODULE STYLES________*/
+
+/* DEFAULT MODULES (position- right) */
+#rightColumn .moduletable, #rightColumn .moduletable_menu, #rightColumn .moduletable_text { padding:0 0 13px 0; margin:0 0 0 30px; width:284px }
+#rightColumn .moduletable h3, #rightColumn .moduletable_menu h3, #rightColumn .moduletable_text h3 { background:url(../images/mod.gif) no-repeat; padding:0 0 10px 30px; line-height:30px; font-size:1.2em; font-weight:bold }
+#rightColumn .moduletable div div, #rightColumn .moduletable_menu div div, #rightColumn .moduletable_text div div  { background:none; padding:0 13px;}
+.pollstableborder, .poll { text-align:left; width:auto }
+.poll td { margin:0; padding:0 }
+#rightColumn .moduletable .bannergroup, #rightColumn .moduletable_text #rightColumn .bannergroup_text { padding:0; margin:0; width:100% }
+#latest_events_content div { text-indent:0; margin:0; padding:0; width:100% } /* Extra class for "mod_gcalendar_latest", if installed */
+
+#rightColumn .moduletable .cont ul, #rightColumn .moduletable_text .cont ul { margin:0 0 0 10px; padding:0; border:0 }
+#rightColumn li, #leftColumn li { list-style:none; margin:0; padding:0 }
+
+/*FLASH IMAGE SLIDESHOW BANNER (user 6) */
+.moduletable_flashBanners { float:left; width:579px; margin:10px 0 10px 20px; padding:0; display:inline }
+
+/*HOME BANNERS (user 7) */
+.moduletable_homeBanners { width:825px; margin-left: auto; margin-right: auto; text-align:center;  padding:0}
+
+/*Sermon Feed (user 7) */
+.moduletable_sermonrss { width:825px; margin-left: auto; margin-right: auto; text-align:center;  padding:0}
+
+/*MAP & DIRECTIONS BUTTON/MODULE (user 8) */
+.moduletable_directions { float:left; width:162px; height:36px; margin:0 0 0 140px; padding:0; display:inline }
+
+/*LOGIN MODULE (user 9) */
+.moduletable_login { font-size:0.9em; background:none; float:right; margin-top:70px; width:490px }
+.moduletable_login div div { background:none; padding:0 }
+.moduletable_login .cont { padding:15px 45px 0 0; margin-left:35px  }
+.moduletable_login li, .moduletable_login p { list-style:none; float:left; margin:0 7px 0 0; display:inline }
+/* Note: If positioned in the left column, remove the margin from these styles */
+.moduletable_login ul { margin:0; padding:0 }
+#modlgn_remember { width:20px; border:none; margin:15px 0 0 0 }
+#form-login .button { margin:15px 0 0 0; font-family:"Verdana, Arial, san-serif" }
+
+/*____________END MODULE STYLES______________ */
+
+
+/*________________GENERAL STYLES_________________*/
+.left { float:left; position:relative }
+.right { float:right; position:relative }
+.clear { clear:both }
+.clear-l { clear:left }
+.clear-r { clear:right }
+.spacer	{ height:10px }
+hr { height:1px; color:#D1C0A0 }
+
+/* Use imgRight and imgLeft classes for spacing, alignment, and image borders. */ 
+/*Image Styles*/
+.contentpaneopen img { margin:8px; border:0 }
+.contentpaneopen .buttonheading img { padding:18px 0 0 0; margin:0 9px 0 0 }
+.buttonheading { background:url(../images/button-heading.gif) repeat-x  }
+.buttonheading a { margin:0 2px }
+td.buttonheading img, .hasTip img { border:none; margin:0 2px; padding: 0;  }
+.imgRight { float:right; position:relative; border:3px double #ccc  }
+.imgLeft { float:left; position:relative; border:3px double #ccc }
+.img {  border:3px double #ccc }
+/*End Image Styless*/
+.createdate, .small, .modifydate, .pagenavcounter { font-size:0.8em; padding:2px 0; color:#bd4306 }
+table.contentpaneopen, table.blog { width:99% }
+table.contentpaneopen fieldset { margin-top:15px; border-bottom:1px dotted #ccc; padding-bottom:7px; width:98% }
+.contentpane li ul { margin-bottom:8px; border-bottom:1px solid #ccc; padding-bottom:5px }
+td.contentdescription { padding:8px; }
+.componentheading, .contentheading { font-size:1.4em; font-family:Verdana, Arial, san-serif; color:#f9f0da; padding:2px 0 0 30px; margin:0; height:44px; width:100% !important; width:95%; background: url(../images/title-bg.gif) top left no-repeat }
+#component-contact .contentheading { padding:13px 0 0 30px }
+.componentheading { margin:0; padding:0 0 10px 0 }
+div .componentheading { background:none; height:20px; line-height:20px  }
+.button { width:68px; height:20px; border:none; padding:0; margin:5px 0 0 0; color:#f9f0da; font-size:0.9em; background:url(../images/button.png) no-repeat }
+a.readon { color:#f9f0da; background:url(../images/read.gif) no-repeat; display:block; width:91px; height:25px; padding:2px 0 0 0; font-weight:bold; text-decoration:none; text-align:center; float:right; font-size:0.9em }
+a.readon:hover { color:#F0EBD2  }
+.article_separator { display:block; height:10px; margin:4px 0; width:99%; background:url(../images/article-div.gif) repeat-x }
+.column_separator { border-left:1px dotted #f7c376; padding-left:10px; }
+.pagenav  { font-size:1em }
+#searchForm .button { margin-left:10px }
+.inputbox { border:1px solid #23180e; width:auto }
+#modlgn_remember { width:20px; border:none }
+
+h1 { font-size:1.4em; margin: 1em 0 .8em 0; }
+h2 { font-size:1.3em; margin: 1em 0 .8em 0; }
+h3 { font-size:1.2em }
+h4 { font-size:1.1em }
+h5 { font-size:small; color:#352E28; }
+
+/*___________________Table View______________*/
+td.sectiontableheader { background:#463a30; border-right:1px dotted #352e28; padding:5px 10px; font-weight:bold }
+td.sectiontableheader a { text-decoration:none }
+tr.sectiontableentry1 td { padding:5px }
+tr.sectiontableentry2 td { padding:5px }
+tr.sectiontableentry2 {  }
+
+/*_______________EXTRAS __________________*/
+
+#upcoming_events_content { padding:0 0 15px 0 }
+
+/* System Standard Messages */
+#system-message { color:#000 }
+#system-message { margin-bottom: 20px; }
+#system-message dd.message ul { list-style:none; background:#C3D2E5 url(../../system/images/notice-info.png) 4px center no-repeat;border-top: 3px solid #DE7A7B; border-bottom: 3px solid #DE7A7B; margin:0px; padding:10px 0 10px 40px; text-indent:0px }
+/* System Error Messages */
+#system-message dd.error ul { list-style:none; color:#c00; background:#E6C0C0 url(../../system/images/notice-alert.png) 4px center no-repeat; border-top: 3px solid #DE7A7B; border-bottom: 3px solid #DE7A7B; margin:0px; padding:10px 0 10px 40px; text-indent:0px;}
+/* System Notice Messages */
+#system-message dd.notice ul { list-style:none; color:#c00; background:#EFE7B8 url(../../system/images/notice-note.png) 4px center no-repeat; border-top: 3px solid #F0DC7E; border-bottom: 3px solid #F0DC7E; margin:0px; padding:10px 0 10px 40px; text-indent:0px;}
+#system-message .message ul li { list-style:none; background-image:none }
+
+/* Component Specific Fixes */
+#component-contact table td { padding: 2px 10px }
+#component-contact img { border:none; margin:0; padding:0 }

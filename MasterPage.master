@@ -1,0 +1,185 @@
+<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+<%@ Register Src="usercontrols/FooterControl.ascx" TagName="FooterControl" TagPrefix="uc2" %>
+<%@ Register Src="usercontrols/header.ascx" TagName="header" TagPrefix="uc1" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+    <head runat="server">
+        <script language="JavaScript">
+<!--            Hide
+
+            function setclear() {
+
+                document.forms[0].clear.value = "Reset";
+
+            }
+
+            function checkEnter(e) { //e is event object passed from function invocation
+                var characterCode //literal character code will be stored in this variable
+
+                if (e && e.which) { //if which property of event object is supported (NN4)
+                    e = e
+                    characterCode = e.which //character code is contained in NN4's which property
+                }
+                else {
+                    e = event
+                    characterCode = e.keyCode //character code is contained in IE's keyCode property
+                }
+
+                if (characterCode == 13) { //if generated character code is equal to ascii 13 (if enter key)
+                    document.forms[0].submit() //submit the form
+                    return false
+                }
+                else {
+                    return true
+                }
+
+            }
+
+
+
+
+            /**********************************************************
+            * Name:		doNothing()
+            * Description:	empty placeholder
+            **********************************************************/
+            function doNothing() {
+                ;
+            }
+
+            /**********************************************************
+            * Name:		txtStartDate_onKeyPress()
+            * Description:	IE event that only allows valid chars to 
+            *				be typed in date textboxes
+            **********************************************************/
+            function txtDate_onKeypress() {
+                var string = "1234567890/";
+                if (string.indexOf(unescape('%' + window.event.keyCode.toString(16))) != -1)
+                    window.event.returnValue = true;
+                else
+                    window.event.returnValue = false;
+            }
+
+            /**********************************************************
+            * Name:		txtTime_onKeyPress()
+            * Description:	IE event that only allows valid chars to 
+            *				be typed in time textboxes
+            **********************************************************/
+            function txtTime_onKeypress() {
+                var string = "1234567890:AMP";
+                if (string.indexOf(unescape('%' + window.event.keyCode.toString(16))) != -1)
+                    window.event.returnValue = true;
+                else
+                    window.event.returnValue = false;
+            }
+
+            /**********************************************************
+            * Name:		StartDate_Change()
+            * Description:	Callback for popup calendar, changes the 
+            *				start date
+            **********************************************************/
+            function Date_Change(sNewValue, sField) {
+                document.strForm[sField].value = sNewValue;
+            }
+
+            function openCalendar(sDate, sCallback, sCallbackField, nTop, nLeft) {
+                var oWindow;
+                oWindow = window.open("/popupcalendar.asp?date=" + sDate + "&callback=" + sCallback + "" + "&callbackfield=" + sCallbackField + "", "calendar", "top=" + nTop + ",left=" + nLeft + ",height=180,width=160,status=no,resizable=no,toolbar=no,menubar=no,scrollbars=no,location=no");
+                oWindow.focus();
+                return true;
+            }
+
+            function toggleWindow(sWindow) {
+                //when = newDate();
+                //when.setDay(when.getDay()+1);
+                //when = when.toGMTString();
+                if (document.all) {
+                    if (document.all(sWindow).style.display == 'none') {
+                        document.all(sWindow).style.display = '';
+                        sWin = sWindow + "_option";
+                        document.images(sWin).src = '/images/navigate_close.png';
+                        document.images(sWin).alt = 'Hide Details about this Song..';
+                        document.cookie = sWindow + "=TRUE";
+                    }
+                    else {
+                        document.all(sWindow).style.display = 'none';
+                        sWin = sWindow + "_option";
+                        document.images(sWin).src = '/images/navigate_open.png';
+                        document.images(sWin).alt = 'More Details about this Song..';
+                        document.cookie = sWindow + "=FALSE";
+                    }
+                }
+                else if (document.getElementById) {
+                    if (document.getElementById(sWindow).style.display == 'none') {
+                        document.getElementById(sWindow).style.display = '';
+                        document.getElementById(sWindow).style.visibility = 'visible';
+                        sWin = sWindow + "_option";
+                        document.images[sWin].src = '/images/navigate_close.png';
+                        document.images[sWin].alt = 'Hide Details about this Song..';
+                        document.cookie = sWindow + "=TRUE";
+                    }
+                    else {
+                        document.getElementById(sWindow).style.display = 'none';
+                        document.getElementById(sWindow).style.visibility = 'hidden';
+                        sWin = sWindow + "_option";
+                        document.images[sWin].src = '/images/navigate_open.png';
+                        document.images[sWin].alt = 'More Details about this Song..';
+                        document.cookie = sWindow + "=FALSE";
+                    }
+                }
+            }
+
+            function popup(url) {
+                newWindow = window.open(url, 'daughter', 'menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=no,width=433,height=500,screenX=100,screenY=100,top=100,left=100');
+                if (newWindow.opener == null) newWindow.opener = self;
+                newWindow.focus();
+            }
+
+            function popupwide(url) {
+                newWindow = window.open(url, 'daughter', 'menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=no,width=600,height=500,screenX=100,screenY=100,top=100,left=100');
+                if (newWindow.opener == null) newWindow.opener = self;
+                newWindow.focus();
+            }
+
+            function popup2(url) {
+                newWindow = window.open(url, 'daughter2', 'menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=no,width=433,height=500,screenX=200,screenY=200,top=200,left=200');
+                if (newWindow.opener == null) newWindow.opener = self;
+                newWindow.focus();
+            }
+
+            function popupcalendar(url) {
+                newWindow = window.open(url, 'daughter', 'menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=no,width=700,height=500,screenX=100,screenY=100,top=100,left=100');
+                if (newWindow.opener == null) newWindow.opener = self;
+                newWindow.focus();
+            }
+
+//stop hiding-->
+</script>
+        
+        <script>
+			function SelectTab(itemID)
+			{
+				ob_em_SelectItem(itemID);
+				document.getElementById('tabIframe').src="inserts/page" + itemID + ".aspx";
+			}
+		</script>
+        <title><%=ConfigurationManager.AppSettings("gsSiteName")%></title>
+        
+        <link href="template.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body >
+        <form id="form1" runat="server">
+            <div id="wrapper">
+                <div id="header" style="top=-10px">
+                    <uc1:header ID="Header1" runat="server" />                  
+                </div>
+                <div id="content" style="content">
+                    <asp:contentplaceholder id="contentpanel" runat="server">
+                    </asp:contentplaceholder>
+                </div>
+           
+            </div>
+        </form>
+    </body>
+</html>

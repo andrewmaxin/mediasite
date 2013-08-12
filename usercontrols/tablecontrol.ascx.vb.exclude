@@ -1,0 +1,38 @@
+
+Partial Class usercontrols_tablecontrol
+    Inherits System.Web.UI.UserControl
+
+    Private m_intFilterCode As Integer
+    Private m_intSearchCode As Integer
+    Private m_strSearchText As String
+
+    Public Property FilterCode() As Integer
+        Get
+            FilterCode = m_intFilterCode
+        End Get
+        Set(ByVal value As Integer)
+            m_intFilterCode = value
+        End Set
+    End Property
+
+    Public Property SearchByCode() As Integer
+        Get
+            SearchByCode = m_intSearchCode
+        End Get
+        Set(ByVal value As Integer)
+            m_intSearchCode = value
+        End Set
+    End Property
+
+    Public Property SearchByText() As String
+        Get
+            SearchByText = m_strSearchText
+        End Get
+        Set(ByVal value As String)
+            m_strSearchText = value
+        End Set
+    End Property
+
+
+
+End Class
